@@ -15,7 +15,6 @@ RUN curl -fsSL https://get.docker.com | sh
 
 # Verify Docker installation
 RUN docker --version
-RUN dockerd-rootless-setuptool.sh install
 
 # Expose the web-based terminal port
 EXPOSE 4200
