@@ -17,9 +17,6 @@ RUN curl -fsSL https://get.docker.com | sh
 # Verify Docker installation
 RUN docker --version
 
-# Run Docker
-RUN sudo dockerd --host unix:///var/run/docker.sock
-
 # Expose the web-based terminal port
 EXPOSE 4200
 
