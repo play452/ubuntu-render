@@ -1,16 +1,18 @@
 FROM ubuntu:22.04
 
+# Update and install prerequisites
 RUN apt-get update && \
-    apt-get install -y shellinabox sudo && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN echo 'root:root' | chpasswd
+# Set non-interactive mode
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Docker
-RUN apt-get install -y docker-ce docker-ce-cli containerd.io && \
-    systemctl enable docker.service && \
-    systemctl start docker.service
+# Install Docker using the official script
+RUN curl -fsSL https://get.docker.com | sh
+
+# Verify Docker installation
+RUN docker --version
 
 # Expose the web-based terminal port
 EXPOSE 4200
