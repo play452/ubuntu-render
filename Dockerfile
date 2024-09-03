@@ -5,6 +5,7 @@ RUN apt-get update && \
     apt-get install -y shellinabox && \
     apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/*
+RUN echo 'root:root' | chpasswd
 
 # Set non-interactive mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -14,6 +15,7 @@ RUN curl -fsSL https://get.docker.com | sh
 
 # Verify Docker installation
 RUN docker --version
+RUN dockerd-rootless-setuptool.sh install
 
 # Expose the web-based terminal port
 EXPOSE 4200
