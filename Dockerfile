@@ -5,16 +5,9 @@ RUN apt-get update && \
     apt-get install -y shellinabox && \
     apt-get install -y curl sudo && \
     rm -rf /var/lib/apt/lists/*
-RUN echo 'root:root' | chpasswd
-
-# Set non-interactive mode
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Install Docker using the official script
-RUN curl -fsSL https://get.docker.com | sh
-
-# Verify Docker installation
-RUN docker --version
+RUN sudo passwd root
+RUN Ol
+RUN Ol
 
 # Expose the web-based terminal port
 EXPOSE 4200
